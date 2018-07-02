@@ -1,0 +1,11 @@
+stages:
+  - test
+
+data-is-sorted:
+  image: ubuntu:latest
+  stage: test
+  variables:
+    LANG: ""
+  script:
+    - bash -c 'diff <(grep \{ data.toml) <(sort -u data.toml | grep \{)'
+
